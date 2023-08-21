@@ -5,4 +5,5 @@
 * PyNaCl
 
 ## Deployment
+* This is currently done manually (automation WIP)
 * AWS Lambda with AWS API Gateway
