@@ -1,0 +1,31 @@
+name: Deploy Lambda Function
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  release:
+    name: Deploy lambda function
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout source code
+        uses: actions/checkout@v3
+      - name: default deploy
+        uses: appleboy/lambda-action@v0.1.9
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+          function_name: osukoreanbot
+      - name: zip Lambda Function
+        run: |
+          cp package-original.zip package.zip
+          zip package.zip osukoreanbot.py
+      - name: AWS Deploy
+        run: |
+          aws lambda update-function-code --function-name osukoreanbot --zip-file fileb://package.zip
+
+
