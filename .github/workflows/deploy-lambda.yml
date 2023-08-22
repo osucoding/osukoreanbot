@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: checkout source code
         uses: actions/checkout@v3
+      - name: list files
+        run: ls -al
       - name: default deploy
         uses: appleboy/lambda-action@v0.1.9
         with:
