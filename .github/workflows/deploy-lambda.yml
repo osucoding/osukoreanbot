@@ -15,6 +15,10 @@ jobs:
         uses: actions/checkout@v3
       - name: list files
         run: ls -al
+      - name: zip Lambda Function
+        run: |
+          cp package-original.zip package.zip
+          zip package.zip osukoreanbot.py
       - name: default deploy
         uses: appleboy/lambda-action@v0.1.9
         with:
@@ -22,10 +26,7 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: us-east-2
           function_name: osukoreanbot
-      - name: zip Lambda Function
-        run: |
-          cp package-original.zip package.zip
-          zip package.zip osukoreanbot.py
+
       - name: AWS Deploy
         run: |
           aws lambda update-function-code --function-name osukoreanbot --zip-file fileb://package.zip
