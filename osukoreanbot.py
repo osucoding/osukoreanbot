@@ -2,7 +2,6 @@ import json
 
 from nacl.signing import VerifyKey
 from nacl.exceptions import BadSignatureError
-# from discord_interactions import verify_key
 
 PUBLIC_KEY = 'add667855a0645dabbb2230f36cf37d3127bc17ceb8ea6b732070524413b932c'
 
@@ -16,10 +15,6 @@ def lambda_handler(event, context):
     # validate the interaction
 
     verify_key = VerifyKey(bytes.fromhex(PUBLIC_KEY))
-    # if not verify_key(body, signature, timestamp, PUBLIC_KEY):
-    #   return {
-    #     'message': 'not verified'
-    #   }
 
     message = timestamp + json.dumps(body, separators=(',', ':'))
 

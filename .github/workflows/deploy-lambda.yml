@@ -31,7 +31,3 @@ jobs:
           timeout: 10
           handler: lambda_handler
           runtime: python3.7
-
-      - name: AWS Deploy
-        run: |
-          aws lambda update-function-code --region us-east-2 --function-name osukoreanbot --zip-file fileb://package.zip
