@@ -26,6 +26,12 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: us-east-2
           function_name: osukoreanbot
+          zip_file: package.zip
+          memory_size: 128
+          timeout: 10
+          handler: lambda_handler
+          role: arn:aws:iam::754961570834:user/github-actions
+          runtime: python3.7
 
       - name: AWS Deploy
         run: |
