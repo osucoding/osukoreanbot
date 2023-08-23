@@ -9,15 +9,15 @@ jobs:
     name: Deploy lambda function
     runs-on: ubuntu-latest
     steps:
-      - name: checkout source code
+      - name: Checkout source code
         uses: actions/checkout@v3
 
-      - name: zip Lambda Function
+      - name: Zip AWS Lambda function
         run: |
           cp package-original.zip package.zip
           zip package.zip *.py
 
-      - name: default deploy
+      - name: Deploy to AWS Lambda
         uses: appleboy/lambda-action@v0.1.9
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
