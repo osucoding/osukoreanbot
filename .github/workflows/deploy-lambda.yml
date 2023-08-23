@@ -1,0 +1,31 @@
+name: Deploy Lambda Function
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  release:
+    name: Deploy lambda function
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Zip AWS Lambda function
+        run: |
+          cp package-original.zip package.zip
+          zip package.zip *.py
+
+      - name: Deploy to AWS Lambda
+        uses: appleboy/lambda-action@v0.1.9
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: us-east-2
+          function_name: osukoreanbot
+          zip_file: package.zip
+          memory_size: 128
+          timeout: 10
+          handler: lambda_handler
+          runtime: python3.7
