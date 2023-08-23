@@ -34,4 +34,4 @@ jobs:
 
       - name: AWS Deploy
         run: |
-          aws lambda update-function-code --function-name osukoreanbot --zip-file fileb://package.zip
+          aws lambda update-function-code --region us-east-2 --function-name osukoreanbot --zip-file fileb://package.zip
