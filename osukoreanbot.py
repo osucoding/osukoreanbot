@@ -7,12 +7,6 @@ from nacl.exceptions import BadSignatureError
 PUBLIC_KEY = 'add667855a0645dabbb2230f36cf37d3127bc17ceb8ea6b732070524413b932c'
 
 def lambda_handler(event, context):
-    # return {
-    #     'statusCode': 200,
-    #     'body': json.dumps({
-    #         'message': 'sup'
-    #     })
-    # }
   try:
     body = json.loads(event['body'])
 
