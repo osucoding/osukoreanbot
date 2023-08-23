@@ -2,8 +2,6 @@ name: Deploy Lambda Function
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -13,12 +11,12 @@ jobs:
     steps:
       - name: checkout source code
         uses: actions/checkout@v3
-      - name: list files
-        run: ls -al
+
       - name: zip Lambda Function
         run: |
           cp package-original.zip package.zip
-          zip package.zip osukoreanbot.py
+          zip package.zip *.py
+
       - name: default deploy
         uses: appleboy/lambda-action@v0.1.9
         with:
