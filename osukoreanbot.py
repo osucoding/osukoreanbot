@@ -8,19 +8,15 @@ PUBLIC_KEY = 'add667855a0645dabbb2230f36cf37d3127bc17ceb8ea6b732070524413b932c'
 
 def lambda_handler(event, context):
   try:
-    body = json.loads(event['body'])
-
-    signature = event['headers']['x-signature-ed25519']
-    timestamp = event['headers']['x-signature-timestamp']
-
-    # validate the interaction
-
     verify_key = VerifyKey(bytes.fromhex(PUBLIC_KEY))
 
-    message = timestamp + json.dumps(body, separators=(',', ':'))
+    signature = event['headers']["x-signature-ed25519"]
+    timestamp = event['headers']["x-signature-timestamp"]
+    body = event['body']
 
     try:
-      verify_key.verify(message.encode(), signature=bytes.fromhex(signature))
+      verify_key.verify(f'{timestamp}{body}'.encode(), bytes.fromhex(signature))
+      body = json.loads(event['body'])
     except BadSignatureError as e:
       logging.error(f'BadSignatureError raised. {e}')
       return {
