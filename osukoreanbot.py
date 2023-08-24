@@ -47,7 +47,10 @@ def lambda_handler(event, context):
         'body': json.dumps('unhandled request type')
       }
   except:
-    raise
+    return {
+      'statusCode': 400,
+      'body': json.dumps('malformed event structure')
+    }
 
 def command_handler(body):
   command = body['data']['name']
