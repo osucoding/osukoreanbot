@@ -1,4 +1,5 @@
 import json
+import logging
 
 from nacl.signing import VerifyKey
 from nacl.exceptions import BadSignatureError
@@ -20,7 +21,8 @@ def lambda_handler(event, context):
 
     try:
       verify_key.verify(message.encode(), signature=bytes.fromhex(signature))
-    except BadSignatureError:
+    except BadSignatureError as e:
+      logging.error(f'BadSignatureError raised. {e}')
       return {
         'statusCode': 401,
         'body': json.dumps('invalid request signature')
