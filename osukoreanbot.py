@@ -1,10 +1,17 @@
 import json
 import logging
+import os
 
 from nacl.signing import VerifyKey
 from nacl.exceptions import BadSignatureError
 
-PUBLIC_KEY = 'add667855a0645dabbb2230f36cf37d3127bc17ceb8ea6b732070524413b932c'
+try:
+  PUBLIC_KEY = os.environ['PUBLIC_KEY']
+except:
+  f = open('./secrets/discord_bot.json')
+  data = json.load(f)
+  PUBLIC_KEY = data['public_key']
+  f.close()
 
 def lambda_handler(event, context):
   try:

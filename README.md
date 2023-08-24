@@ -9,7 +9,10 @@
   -
   ```
   {
-    "bot_token": "BOT TOKEN HERE"
+    "bot_token": "BOT TOKEN HERE",
+    "app_id": "APP ID HERE",
+    "server_id": "SERVER ID HERE",
+    "public_key": "PUBLIC KEY HERE"
   }
   ```
 

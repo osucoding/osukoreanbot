@@ -2,14 +2,16 @@ import requests
 import os
 import json
 
-APP_ID = "1142572072338456616"
-SERVER_ID = "633901394352537607"
 try:
+  APP_ID = os.environ['APP_ID']
+  SERVER_ID = os.environ['SERVER_ID']
   BOT_TOKEN = os.environ['BOT_TOKEN']
 except:
   f = open('./secrets/discord_bot.json')
   data = json.load(f)
   BOT_TOKEN = data['bot_token']
+  APP_ID = data['app_id']
+  SERVER_ID = data['server_id']
   f.close()
 
 # global commands are cached and only update every hour

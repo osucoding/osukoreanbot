@@ -2,6 +2,8 @@ name: Deploy Lambda Function
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: main
   workflow_dispatch:
 
 jobs:
