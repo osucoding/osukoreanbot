@@ -22,5 +22,5 @@
 
 ## Deployment
 * On push event to the `main` branch, GitHub Actions triggers a deployment job that uploads the updated code to AWS Lambda
-* Do **NOT** delete `package-original.zip`. This contains the extracted `PyNaCl` dependency from the AWS Linux 2 environment.
+* Do **NOT** delete `pynacl-aws-linux-2-3.11.zip`. This contains the extracted `PyNaCl` dependency from the AWS Linux 2 environment.
 * AWS Lambda with AWS API Gateway
