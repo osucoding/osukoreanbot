@@ -5,7 +5,7 @@
 * To install `virtualenv`, run `$ python3 -m pip install virtualenv`
 * To create a virtual environment, run `$ python3.11 -m virtualenv venv`
 * To activate a virtual environment, run `$ source venv/bin/activate`. To exit a virtual environment, run `$ deactivate`
-* Running `update_command.py` locally would require you to create `./secrets/discord_bot.json` file with the `BOT_TOKEN`. For example,
+* Running `update_command.py` locally would require you to create `./secrets/discord_bot.json` file with the Discord credentials. For example,
   -
   ```
   {
