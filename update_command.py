@@ -1,8 +1,16 @@
 import requests
+import os
+import json
 
 APP_ID = "1142572072338456616"
 SERVER_ID = "633901394352537607"
-BOT_TOKEN = "MTE0MjU3MjA3MjMzODQ1NjYxNg.GxV0mX.3RorROwzpLmH8eWhSSlU97vQ4JDAolloqjuSzo"
+try:
+  BOT_TOKEN = os.environ['BOT_TOKEN']
+except:
+  f = open('./secrets/discord_bot.json')
+  data = json.load(f)
+  BOT_TOKEN = data['bot_token']
+  f.close()
 
 # global commands are cached and only update every hour
 # url = f'https://discord.com/api/v10/applications/{APP_ID}/commands'

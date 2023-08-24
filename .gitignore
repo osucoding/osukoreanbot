@@ -161,3 +161,6 @@ cython_debug/
 
 # macOS DS Store
 .DS_Store
+
+# Secrets
+secrets/
