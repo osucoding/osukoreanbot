@@ -164,3 +164,7 @@ cython_debug/
 
 # Secrets
 secrets/
+
+# zipped package
+package/
+package.zip

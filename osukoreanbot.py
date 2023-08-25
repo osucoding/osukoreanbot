@@ -1,9 +1,11 @@
 import json
-import logging
+import logging as log
 import os
 
 from nacl.signing import VerifyKey
 from nacl.exceptions import BadSignatureError
+
+from next_command import next_command
 
 try:
   PUBLIC_KEY = os.environ['PUBLIC_KEY']
@@ -25,10 +27,10 @@ def lambda_handler(event, context):
       verify_key.verify(f'{timestamp}{body}'.encode(), bytes.fromhex(signature))
       body = json.loads(event['body'])
     except BadSignatureError as e:
-      logging.error(f'BadSignatureError raised. {e}')
+      log.error(f'BadSignatureError raised. {e}')
       return {
         'statusCode': 401,
-        'body': json.dumps('invalid request signature')
+        'body': json.dumps('Invalid request signature')
       }
 
     # handle the interaction
@@ -45,14 +47,18 @@ def lambda_handler(event, context):
     elif t == 2:
       return command_handler(body)
     else:
+      msg = f'Invalid request type: {t}'
+      log.error(msg)
       return {
         'statusCode': 400,
-        'body': json.dumps('unhandled request type')
+        'body': json.dumps(msg)
       }
   except:
+    msg = 'Invalid event structure'
+    log.error(msg)
     return {
       'statusCode': 400,
-      'body': json.dumps('malformed event structure')
+      'body': json.dumps(msg)
     }
 
 def command_handler(body):
@@ -68,8 +74,12 @@ def command_handler(body):
         }
       })
     }
+  elif command == 'next-event':
+    return next_command(body)
   else:
+    msg = f'Invalid command: {command}'
+    log.warn(msg)
     return {
       'statusCode': 400,
-      'body': json.dumps('unhandled command')
+      'body': json.dumps(msg)
     }
