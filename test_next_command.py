@@ -5,7 +5,7 @@ import datetime
 class TestNextCommand(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.osu_filename = 'osu_holiday.json'
+        self.osu_filename = 'osu_events.json'
         return super().setUp()
 
     def test_search_next_event_with_existing_date_left(self):

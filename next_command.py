@@ -26,7 +26,7 @@ def next_command(body):
 
     if argument == 'osu':
         today = datetime.datetime.now()
-        next_event = search_next_event(today, 'osu_holiday.json')
+        next_event = search_next_event(today, 'osu_events.json')
         content = f"Next event: {next_event.get_description()}, scheduled on {next_event.get_readable_datetime()}"
         return {
             'statusCode': 200,
