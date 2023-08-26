@@ -1,0 +1,70 @@
+{
+    "events": [
+        {
+            "description": "Labor Day - offices closed",
+            "year": 2023,
+            "month": 9,
+            "date": 4
+        },
+        {
+            "description": "Autumn Break Begins 10/12~13 - offices open",
+            "year": 2023,
+            "month": 10,
+            "date": 12
+        },
+        {
+            "description": "Veterans Day - offices closed",
+            "year": 2023,
+            "month": 11,
+            "date": 10
+        },
+        {
+            "description": "Thanksgiving Break Begins - offices open",
+            "year": 2023,
+            "month": 11,
+            "date": 22
+        },
+        {
+            "description": "Thanksgiving Day - offices closed",
+            "year": 2023,
+            "month": 11,
+            "date": 23
+        },
+        {
+            "description": "Indigenous Peoples' Day / Columbus Day observed - offices closed",
+            "year": 2023,
+            "month": 11,
+            "date": 24
+        },
+        {
+            "description": "Last Day of Classes",
+            "year": 2023,
+            "month": 12,
+            "date": 6
+        },
+        {
+            "description": "First Day of Classes",
+            "year": 2024,
+            "month": 1,
+            "date": 8
+        },
+        {
+            "description": "Martin Luther King Jr. Day - offices closed",
+            "year": 2024,
+            "month": 1,
+            "date": 15
+        },
+        {
+            "description": "Spring Break Begins 3/11~15",
+            "year": 2024,
+            "month": 3,
+            "date": 11
+        },
+        {
+            "description": "Last Day of Classes",
+            "year": 2024,
+            "month": 4,
+            "date": 22
+        }
+    ]
+}

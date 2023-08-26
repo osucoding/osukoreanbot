@@ -26,6 +26,17 @@ json = [
     'name': 'bleb',
     'description': 'Test command.',
     'options': []
+  },
+  {
+    'name': 'next-event',
+    'description': 'Return the next upcoming event.',
+    'options': [
+      {
+        'name': 'osu',
+        'description': 'Return the next upcoming event for Ohio State.',
+        'type': 1
+      }
+    ]
   }
 ]
 
