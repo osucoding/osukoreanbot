@@ -15,7 +15,7 @@ jobs:
       - name: Zip AWS Lambda function
         run: |
           mkdir package
-          unzip pynacl-aws-linux-2.zip -d package/
+          unzip pynacl-aws-linux-2-3.11.zip -d package/
           cp *.py package/
           cd package/
           zip -r package.zip *
@@ -32,4 +32,4 @@ jobs:
           memory_size: 128
           timeout: 10
           handler: osukoreanbot.lambda_handler
-          runtime: python3.7
+          runtime: python3.11
