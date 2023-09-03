@@ -37,6 +37,19 @@ def next_command(body):
                 }
             })
         }
+    elif argument == 'jp' :
+        today = datetime.datetime.now()
+        next_event = search_next_event(today, 'jp_events.json')
+        content = f"Next event: {next_event.get_description()}, scheduled on {next_event.get_readable_datetime()}"
+        return {
+            'statusCode': 200,
+            'body' : json.dumps({
+                'type': 4,
+                'data': {
+                    'content': content,
+                }
+            })
+        }
     else:
         msg = f'Invalid argument: {argument}'
         log.error(msg)
