@@ -50,7 +50,7 @@ def update_command_list(event, lambda_context):
     'Authorization': f'Bot {BOT_TOKEN}'
   }, json=command_list)
 
-  log.info(response.json())
+  log.info(f'{response.json() = }')
   log.info(f'{response.status_code = }')
   return {
     'statusCode': 200,
