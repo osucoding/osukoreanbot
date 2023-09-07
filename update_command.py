@@ -3,7 +3,7 @@ import os
 import logging as log
 import json
 
-log.basicConfig(level=log.INFO)
+log.getLogger().setLevel(log.INFO)
 
 def update_command_list(event, lambda_context):
   log.info(f'{event = }')

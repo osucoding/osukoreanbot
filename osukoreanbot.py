@@ -7,6 +7,8 @@ from nacl.exceptions import BadSignatureError
 
 from next_command import next_command
 
+log.getLogger().setLevel(log.INFO)
+
 try:
   PUBLIC_KEY = os.environ['PUBLIC_KEY']
 except:
