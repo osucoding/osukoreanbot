@@ -5,7 +5,9 @@ import json
 
 log.basicConfig(level=log.INFO)
 
-def update_command_list():
+def update_command_list(event, lambda_context):
+  log.info(f'{event = }')
+  log.info(f'{lambda_context = }')
   try:
     APP_ID = os.environ['APP_ID']
     SERVER_ID = os.environ['SERVER_ID']

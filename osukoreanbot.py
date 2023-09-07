@@ -15,7 +15,9 @@ except:
   PUBLIC_KEY = data['public_key']
   f.close()
 
-def lambda_handler(event, context):
+def lambda_handler(event, lambda_context):
+  log.info(f'{event = }')
+  log.info(f'{lambda_context = }')
   try:
     verify_key = VerifyKey(bytes.fromhex(PUBLIC_KEY))
 
