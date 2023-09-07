@@ -52,8 +52,12 @@ def update_command_list(event, lambda_context):
 
   log.info(f'{response.json() = }')
   log.info(f'{response.status_code = }')
+
   return {
     'statusCode': 200,
+    'headers': {
+        'Content-Type': 'application/json'
+    },
     'body': response.json()
   }
 
